@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>ECX - DP</title>
+  <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="/dp/src/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/dp/src/fonts/themify-icons.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<body>
+
+	<header>
+		<h1>ENGINEERING CAREER EXPO 2019</h1>
+	</header>
+
+	<main>
+
+		<section class="under">			
+			<div>
+				<h2>Display Picture (DP) Generator</h2>
+				<p class="">Upload photo to create your ECX 2019 DP</p>
+				<p class="step">To generate your personalized DP</p>
+			</div>	
+			<ul>
+				<li class="ti">Enter your name in the name field below</li>
+				<li class="ti">Upload your picture (for best experience, crop the picture to square)</li>
+				<li class="ti">Click on Create your own DP</li>
+				<li class="ti">Dont forget to share on 
+					<span class="ti-facebook" style="color: rgb(29, 45, 130);">facebook</span>, 
+					<span class="ti-twitter" style="color: #03A9F4;">twitter</span>, 
+					<span class="ti-instagram" style="color: #00BCD4;">instagram</span>, and make sure you hashtag (#ECXconf, #ECX)</li>
+			</ul>
+		</section>
+
+		<section class="top">
+
+			<div class="author-cont">
+				<p>This webapp was created by a <span class="tint">ECX</span> team member, <span class="tint">Geektutor</span> make sure you checkout his social 
+				page below for his other works: <p>		
+				<!-- <ul>
+					<li><a href="https://twitter.com/Geektutor"><i class="ti-twitter"></i>Geektutor on Twitter</a>
+					<li><a href="https://github.com/Geektutor"><i class="ti-github"></i>Geektutor on Github</a>
+					<li><a href="https://www.facebook.com/Geektutor"><i class="ti-facebook"></i>Geektutor on Facebook</a>
+				</ul>	 -->
+			</div>
+
+			<form enctype="multipart/form-data" action="" method="POST" onsubmit="event.preventDefault();">
+				<fieldset>
+					<legend class="ti-camera"></legend>
+					<div class="form-control">
+	                    <input placeholder="name" required="" id="fullname" name="fullname" type="text">
+					</div>
+					<div class="image-editor">
+						<!-- <input type="file" class="cropit-image-input"> -->
+						<span class="btn btn-input fileinput-button">
+		                    <i class="ti-camera"></i>
+		                    <span>Choose an image...</span>
+							<input id="file" name="file" type="file" class="cropit-image-input" required="">
+							<input type="hidden" name="image-data" class="hidden-image-data" />
+		                </span>
+		                <div class="form-control">
+		                	<button type="reset" class="btn btn-input change hide">
+		                    <i class="ti-image"></i>
+		                    <span>Change Image</span>
+			                </button>
+			                <button type="button" class="btn btn-input delete hide">
+			                    <i class="ti-cancel"></i>
+			                    <span>Remove</span>
+			                </button>
+		                </div> 
+						<div class="cropit-preview"></div>
+						<div class="image-size-label">
+						  Resize image
+						</div>
+						<input type="range" class="cropit-image-zoom-input">
+						<input type="hidden" name="image-data" class="hidden-image-data" />
+					</div>                
+
+	                <div class="button">                
+	                	<button value="submit" type="submit" class="kb-button create-dp">Create your own DP</button>        
+	            	</div>
+				</fieldset>
+            </form>
+			
+		</section>
+		
+	</main>
+
+	<footer>
+		<p> &copy; ECX 2019. All Rights Reserved. Follow on Linkedln 
+			<a href="https://ng.linkedin.com/in/Geektutor" class="social">@Geektutor</p>
+	</footer>
+	
+	<script src="src/js/jquery.min.js"></script>
+    <script src="src/js/jquery.cropit.js"></script>
+	<script src="src/js/main.js"></script>
+</body>
+</html>
