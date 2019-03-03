@@ -21,14 +21,30 @@ $(function() {
 
 		$(".create-dp").attr("disabled","disabled").html('...processing');
 
-		appendFileAndSubmit(username, imageData, function(res){
-	        if(res.status == "ok"){
-	            let temp = res.msg;
-	            navigateTo("yourdp", temp);
-	            return true;
-	        }
-	        return false;
-		});
+    createDP(username, imageData, function(url) {
+      navigateTo("yourdp", createHTMLForImage(url));
+
+      function createHTMLForImage(url) {
+        return `
+          <section class="dp-container">
+            <a href="?" class="arrow-back "><i class="ti-arrow-left"></i></a>
+            <div>
+            <img id="dp_result" src=${url} title="Your DP"/>
+            <br>
+            <a class="download-dp" href="${url}" download="ECX_DP_${username}">Download Image</a>
+          <section>
+        `;
+      }
+    });
+
+		// appendFileAndSubmit(username, imageData, function(res){
+	 //        if(res.status == "ok"){
+	 //            let temp = res.msg;
+	 //            navigateTo("yourdp", temp);
+	 //            return true;
+	 //        }
+	 //        return false;
+		// });
 	});
 
 	/* file input */
@@ -81,46 +97,103 @@ $(function() {
 		return blob;
 	}
 
-	function appendFileAndSubmit(username,ImageURL, cb){
-		// Split the base64 string in data and contentType
-		var block = ImageURL.split(";");
+  function createDP(username, imageUrl, cb){
+    var canvas = document.createElement('canvas'),
+      ctx = canvas.getContext('2d'),
 
-		// Get the content type
-		var contentType = block[0].split(":")[1];
+      grayCanvas = document.createElement('canvas'),
+      grayCtx = grayCanvas.getContext('2d'),
 
-		// get the real base64 content of the file
-		var realData = block[1].split(",")[1];
+      imageCount = 2,
+      viewW = 800,
+      viewH = 800;
 
-		// Convert to blob
-		var blob = b64toBlob(realData, contentType);
+    var userImg = loadImage(imageUrl);
+    var frameImg = loadImage('src/img/frame.jpeg');
 
-		// Create a FormData and append the file
-		var fd = new FormData();
-		fd.append("avatar", ImageURL);
-		fd.append("fullname", username);
-		fd.append("timestamp", new Date().getTime());
+    function loadImage(src) {
+      var img = new Image();
+      img.onload = transformImage;
+      img.src = src;
+      return img;
+    }
 
-		// Submit Form and upload file
-		$.ajax({
-			url:"dp/auth/process.php",
-			data: fd,// the formData function is available in almost all new browsers.
-			type:"POST",
-			contentType:false,
-			processData:false,
-			cache:false,
-			dataType:"json", // Change this according to your response from the server.
-			error:function(err){
-				console.error(err);
-			},
-			success:function(data){
-				(cb && cb !== undefined) && cb(data);	
-			},
-			complete:function(){
-				console.log("Request finished.");
-			}
-		});
+    function transformImage() {
+      if (--imageCount !== 0) return;
+
+      var userW = userImg.width;
+      var userH = userImg.height;
+
+      grayCanvas.width = userW;
+      grayCanvas.height = userH;
+      grayCtx.drawImage(userImg, 0, 0);
+
+      var imageData = grayCtx.getImageData(0, 0, userW, userH);
+      var pixels = imageData.data;
+
+      for (let i = 0; i < pixels.length; i += 4) {
+        var sum = pixels[i] +
+                  pixels[i+1] +
+                  pixels[i+2];
+        var avg = sum / 3;
+        pixels[i] = avg;
+        pixels[i+1] = avg;
+        pixels[i+2] = avg;
+      }
+
+      grayCtx.putImageData(imageData, 0, 0);
+
+      canvas.width = frameImg.width;
+      canvas.height = frameImg.height;
+
+      ctx.drawImage(frameImg, 0, 0);
+
+      ctx.drawImage(grayCanvas, 0, 0, viewW, viewH);
+
+      cb(canvas.toDataURL());
+    }
+  }
+
+	// function appendFileAndSubmit(username,ImageURL, cb){
+	// 	// Split the base64 string in data and contentType
+	// 	var block = ImageURL.split(";");
+
+	// 	// Get the content type
+	// 	var contentType = block[0].split(":")[1];
+
+	// 	// get the real base64 content of the file
+	// 	var realData = block[1].split(",")[1];
+
+	// 	// Convert to blob
+	// 	var blob = b64toBlob(realData, contentType);
+
+	// 	// Create a FormData and append the file
+	// 	var fd = new FormData();
+	// 	fd.append("avatar", ImageURL);
+	// 	fd.append("fullname", username);
+	// 	fd.append("timestamp", new Date().getTime());
+
+	// 	// Submit Form and upload file
+	// 	$.ajax({
+	// 		url:"dp/auth/process.php",
+	// 		data: fd,// the formData function is available in almost all new browsers.
+	// 		type:"POST",
+	// 		contentType:false,
+	// 		processData:false,
+	// 		cache:false,
+	// 		dataType:"json", // Change this according to your response from the server.
+	// 		error:function(err){
+	// 			console.error(err);
+	// 		},
+	// 		success:function(data){
+	// 			(cb && cb !== undefined) && cb(data);	
+	// 		},
+	// 		complete:function(){
+	// 			console.log("Request finished.");
+	// 		}
+	// 	});
 		
-	}
+	// }
 
 	function navigateTo(view, temp = ""){
 	    switch(view){
