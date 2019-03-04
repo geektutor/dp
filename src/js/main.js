@@ -101,9 +101,6 @@ $(function() {
     var canvas = document.createElement('canvas'),
       ctx = canvas.getContext('2d'),
 
-      grayCanvas = document.createElement('canvas'),
-      grayCtx = grayCanvas.getContext('2d'),
-
       imageCount = 2,
       viewW = 800,
       viewH = 800;
@@ -121,34 +118,12 @@ $(function() {
     function transformImage() {
       if (--imageCount !== 0) return;
 
-      var userW = userImg.width;
-      var userH = userImg.height;
-
-      grayCanvas.width = userW;
-      grayCanvas.height = userH;
-      grayCtx.drawImage(userImg, 0, 0);
-
-      var imageData = grayCtx.getImageData(0, 0, userW, userH);
-      var pixels = imageData.data;
-
-      for (let i = 0; i < pixels.length; i += 4) {
-        var sum = pixels[i] +
-                  pixels[i+1] +
-                  pixels[i+2];
-        var avg = sum / 3;
-        pixels[i] = avg;
-        pixels[i+1] = avg;
-        pixels[i+2] = avg;
-      }
-
-      grayCtx.putImageData(imageData, 0, 0);
-
       canvas.width = frameImg.width;
       canvas.height = frameImg.height;
 
       ctx.drawImage(frameImg, 0, 0);
 
-      ctx.drawImage(grayCanvas, 0, 0, viewW, viewH);
+      ctx.drawImage(userImg, 0, 0, viewW, viewH);
 
       cb(canvas.toDataURL());
     }
