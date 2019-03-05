@@ -7,7 +7,7 @@ $(function() {
 	const changebtn = $(".change");
 	const deletebtn = $(".delete");
 	const fileInpbtn = $(".fileinput-button");
-	const main = $("main")
+	const main = $("main");
 	const mainContent = main.innerHTML;
 
   	$('.image-editor').cropit();
@@ -16,7 +16,11 @@ $(function() {
 		e.preventDefault();
 		var username = $("#fullname").val();
 		// Move cropped image data to hidden input
-		var imageData = $('.image-editor').cropit('export');
+		var imageData = $('.image-editor').cropit('export', {
+      type: 'image/jpeg',
+      quality: 1.0,
+      originalSize: true
+    });
 		$('.hidden-image-data').val(imageData);
 
 		$(".create-dp").attr("disabled","disabled").html('...processing');
@@ -121,36 +125,20 @@ $(function() {
     function transformImage() {
       if (--imageCount !== 0) return;
 
-      var userW = userImg.width;
-      var userH = userImg.height;
-
-      grayCanvas.width = userW;
-      grayCanvas.height = userH;
-      grayCtx.drawImage(userImg, 0, 0);
-
-      var imageData = grayCtx.getImageData(0, 0, userW, userH);
-      var pixels = imageData.data;
-
-      for (let i = 0; i < pixels.length; i += 4) {
-        var sum = pixels[i] +
-                  pixels[i+1] +
-                  pixels[i+2];
-        var avg = sum / 3;
-        pixels[i] = avg;
-        pixels[i+1] = avg;
-        pixels[i+2] = avg;
-      }
-
-      grayCtx.putImageData(imageData, 0, 0);
-
       canvas.width = frameImg.width;
       canvas.height = frameImg.height;
 
+      var fillWidth = 800;
+      var r0 = 800 / 800;
+      var r1 = userImg.width / userImg.height;
+
+      console.log(userImg.width, userImg.height)
+
       ctx.drawImage(frameImg, 0, 0);
 
-      ctx.drawImage(grayCanvas, 0, 0, viewW, viewH);
+      ctx.drawImage(userImg, 0, 0, viewW, viewH);
 
-      cb(canvas.toDataURL());
+      cb(canvas.toDataURL('image/jpeg', 1.0));
     }
   }
 
