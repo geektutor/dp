@@ -52,7 +52,7 @@ You can find an online demo at [ECX](https://ecx.website/dp).
 
 # Contributions
 
-####- [jnafolayan](https://github.com/jnafolayan)
+#### -[jnafolayan](https://github.com/jnafolayan)
 
 The jQuery CropIt plugin was used for image upload. The inherent resize feature of the plugin was overriden due to certain design compromises.
 
