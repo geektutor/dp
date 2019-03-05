@@ -112,12 +112,6 @@ $(function() {
       canvas.width = frameImg.width;
       canvas.height = frameImg.height;
 
-      var fillWidth = 800;
-      var r0 = 800 / 800;
-      var r1 = userImg.width / userImg.height;
-
-      console.log(userImg.width, userImg.height)
-
       ctx.drawImage(frameImg, 0, 0);
 
       ctx.drawImage(userImg, 0, 0, viewW, viewH);
