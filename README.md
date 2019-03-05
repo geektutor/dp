@@ -52,9 +52,11 @@ You can find an online demo at [ECX](https://ecx.website/dp).
 
 # Contributions
 
-### [jnafolayan](https://github.com/jnafolayan)
+####- [jnafolayan](https://github.com/jnafolayan)
 
-Wrote JavaScript code to place uploaded image on top of the base frame, and export the resulting composite image to jpeg format. 
+The jQuery CropIt plugin was used for image upload. The inherent resize feature of the plugin was overriden due to certain design compromises.
+
+JavaScript was used to place the uploaded image on top of a base frame, and export the resulting composite image to jpeg format. The base frame is a 1200 x 1200 picture. The alloted space for uploaded image is 800 x 800. 
 
 
 ---
