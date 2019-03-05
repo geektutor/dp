@@ -47,7 +47,7 @@ You can find an online demo at [ECX](https://ecx.website/dp).
 
 `git clone https://github.com/geektutor/dp.git`
 
-- Copy the folder to your **WAMP** www root or **XAMPP** htdots
+- Copy the folder to your **WAMP** www root or **XAMPP** htdots or run php -S 127.0.0.1:1000 from your folder in your terminal
 - Then run in a browser
 
 ---
@@ -60,6 +60,5 @@ JavaScript was used to place the uploaded image on top of a base frame, and expo
 
 # Contributions
 
-#### [Geektutor](https://github.com/geektutor)
 #### [jnafolayan](https://github.com/jnafolayan)
-
+#### [Geektutor](https://github.com/geektutor)
