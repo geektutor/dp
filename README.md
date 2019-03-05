@@ -50,4 +50,11 @@ You can find an online demo at [ECX](https://ecx.website/dp).
 - Copy the folder to your **WAMP** www root or **XAMPP** htdots
 - Then run in a browser
 
+# Contributions
+
+### [jnafolayan](https://github.com/jnafolayan)
+
+Wrote JavaScript code to place uploaded image on top of the base frame, and export the resulting composite image to jpeg format. 
+
+
 ---
