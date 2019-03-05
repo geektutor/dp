@@ -1,26 +1,29 @@
 $(function() {
-  /* global variables */
-  const button = $(".create-dp");
-  const fileInput = $("input[type=file]");
-  const preview = $("img");
-  const changebtn = $(".change");
-  const deletebtn = $(".delete");
-  const fileInpbtn = $(".fileinput-button");
-  const main = $("main");
-  const mainContent = main.innerHTML;
 
-  $(".image-editor").cropit();
+	/* global variables */
+	const button = $(".create-dp");
+	const fileInput = $("input[type=file]");
+	const preview = $("img");
+	const changebtn = $(".change");
+	const deletebtn = $(".delete");
+	const fileInpbtn = $(".fileinput-button");
+	const main = $("main");
+	const mainContent = main.innerHTML;
 
-  $("form").submit(function(e) {
-    e.preventDefault();
-    var username = $("#fullname").val();
-    // Move cropped image data to hidden input
-    var imageData = $(".image-editor").cropit("export");
-    $(".hidden-image-data").val(imageData);
+  	$('.image-editor').cropit();
 
-    $(".create-dp")
-      .attr("disabled", "disabled")
-      .html("...processing");
+	$('form').submit(function(e) {
+		e.preventDefault();
+		var username = $("#fullname").val();
+		// Move cropped image data to hidden input
+		var imageData = $('.image-editor').cropit('export', {
+      type: 'image/jpeg',
+      quality: 1.0,
+      originalSize: true
+    });
+		$('.hidden-image-data').val(imageData);
+
+		$(".create-dp").attr("disabled","disabled").html('...processing');
 
     createDP(username, imageData, function(url) {
       navigateTo("yourdp", createHTMLForImage(url));
@@ -109,11 +112,17 @@ $(function() {
       canvas.width = frameImg.width;
       canvas.height = frameImg.height;
 
+      var fillWidth = 800;
+      var r0 = 800 / 800;
+      var r1 = userImg.width / userImg.height;
+
+      console.log(userImg.width, userImg.height)
+
       ctx.drawImage(frameImg, 0, 0);
 
       ctx.drawImage(userImg, 0, 0, viewW, viewH);
 
-      cb(canvas.toDataURL());
+      cb(canvas.toDataURL('image/jpeg', 1.0));
     }
   }
 
