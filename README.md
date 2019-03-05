@@ -39,11 +39,8 @@ You can find an online demo at [ECX](https://ecx.website/dp).
 - .htacess					:custom server file for file dir access
 - index.html 				:main html file where magic happens
 
-The jQuery CropIt plugin was used for image upload. The inherent resize feature of the plugin was overriden due to certain design compromises.
-
-JavaScript was used to place the uploaded image on top of a base frame, and export the resulting composite image to jpeg format. The base frame is a 1200 x 1200 picture. The alloted space for uploaded image is 800 x 800. 
 ```
---
+
 # How to run locally
 
 - Open your command prompt and clone the repository by running
@@ -55,8 +52,14 @@ JavaScript was used to place the uploaded image on top of a base frame, and expo
 
 ---
 
+# JS Details
+
+The jQuery CropIt plugin was used for image upload. The inherent resize feature of the plugin was overriden due to certain design compromises.
+
+JavaScript was used to place the uploaded image on top of a base frame, and export the resulting composite image to jpeg format. The base frame is a 1200 x 1200 picture. The alloted space for uploaded image is 800 x 800. 
+
 # Contributions
 
-#### -[Geektutor](https://github.com/geektutor)
-#### -[jnafolayan](https://github.com/jnafolayan)
+#### [Geektutor](https://github.com/geektutor)
+#### [jnafolayan](https://github.com/jnafolayan)
 
