@@ -52,7 +52,7 @@ You can find an online demo at [ECX](https://ecx.website/dp).
 
 The jQuery CropIt plugin was used for image upload. The inherent resize feature of the plugin was overriden due to certain design compromises.
 
-JavaScript was used to place the uploaded image on top of a base frame, and export the resulting composite image to jpeg format. The base frame is a 1200 x 1200 picture. The alloted space for uploaded image is 800 x 800. 
+JavaScript was used to place the uploaded image on top of a base frame, and export the resulting composite image to jpeg format. The base frame is a 1200 x 1200 picture. The alloted space for uploaded image is 800 x 800.
 
 The naming style for the image is set on line 38, you can edit the `ECX_DP_` to suit your needs.
 
@@ -61,4 +61,7 @@ You can set the height and width of the uploaded image in the createDP function 
 # Contributors
 
 #### [jnafolayan](https://github.com/jnafolayan)
+
 #### [Geektutor](https://github.com/geektutor)
+
+#### This project is based on [KwaraBuildDP](https://github.com/Ahmzyjazzy/generatedp) by [Ahmad Olarenwaju](https://ng.linkedin.com/in/ahmzyjazzy)
