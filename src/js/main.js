@@ -93,8 +93,16 @@ $(function() {
     var canvas = document.createElement("canvas"),
       ctx = canvas.getContext("2d"),
       imageCount = 2,
-      viewW = 800,
-      viewH = 800;
+      view = {
+        x: 0,
+        y: 0,
+        width: 800,
+        height: 800
+      },
+      innerText = {
+        x: view.width * 0.7,
+        y: view.height - 80
+      };
 
     var userImg = loadImage(imageUrl);
     var frameImg = loadImage("src/img/frame.jpeg");
@@ -114,7 +122,20 @@ $(function() {
 
       ctx.drawImage(frameImg, 0, 0);
 
-      ctx.drawImage(userImg, 0, 0, viewW, viewH);
+      ctx.drawImage(
+        userImg, 
+        view.x, 
+        view.y, 
+        view.width, 
+        view.height);
+
+      ctx.textBaseline = 'bottom';
+      ctx.font = 'bold 20px Arial';
+      ctx.fillStyle = '#fff';
+      ctx.fillText(
+        '#TalkNow', 
+        view.x + innerText.x, 
+        view.y + innerText.y);
 
       cb(canvas.toDataURL('image/jpeg', 1.0));
     }
