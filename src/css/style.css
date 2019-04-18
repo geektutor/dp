@@ -494,3 +494,6 @@ button[type="submit"] {
     left: 3%;
   }
 }
+.name {
+  font-family: "Caveat", cursive;
+}
