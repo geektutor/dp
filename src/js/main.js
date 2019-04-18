@@ -25,7 +25,12 @@ $(function() {
 
 		$(".create-dp").attr("disabled","disabled").html('...processing');
 
-    createDP(username, imageData, function(url) {
+    // x, y, width, height
+    const picData = [150, 50, 600, 600];
+    // name, y
+    const nameData = ['Bilikis Akinjobi', 800];
+
+    createDP(username, imageData, picData, nameData, function(url) {
       navigateTo("yourdp", createHTMLForImage(url));
 
       function createHTMLForImage(url) {
@@ -89,12 +94,20 @@ $(function() {
     return blob;
   }
 
-  function createDP(username, imageUrl, cb) {
+  function createDP(username, imageUrl, pic, name, cb) {
     var canvas = document.createElement("canvas"),
       ctx = canvas.getContext("2d"),
       imageCount = 2,
-      viewW = 800,
-      viewH = 800;
+      view = {
+        x: pic[0],
+        y: pic[1],
+        width: pic[2],
+        height: pic[3]
+      },
+      innerText = {
+        x: view.width * 0.7,
+        y: view.height - 80
+      };
 
     var userImg = loadImage(imageUrl);
     var frameImg = loadImage("src/img/frame.jpeg");
@@ -114,7 +127,28 @@ $(function() {
 
       ctx.drawImage(frameImg, 0, 0);
 
-      ctx.drawImage(userImg, 0, 0, viewW, viewH);
+      ctx.drawImage(
+        userImg, 
+        view.x, 
+        view.y, 
+        view.width, 
+        view.height
+      );
+
+      ctx.textBaseline = 'bottom';
+      ctx.font = 'bold 20px Arial';
+      ctx.fillStyle = '#fff';
+      ctx.fillText(
+        '#TalkNow', 
+        view.x + innerText.x, 
+        view.y + innerText.y
+      );
+
+      ctx.textBaseline = 'top';
+      ctx.textAlign = 'right';
+      ctx.font = 'normal 18px Candara';
+      ctx.fillStyle = '#000';
+      ctx.fillText(name[0], view.x + view.width, name[1]);
 
       cb(canvas.toDataURL('image/jpeg', 1.0));
     }
