@@ -130,9 +130,9 @@ $(function() {
 
       ctx.drawImage(userImg, view.x, view.y, view.width, view.height);
 
-      //ctx.textBaseline = "bottom";
-      //ctx.font = "bold 30px Arial";
-      //ctx.fillStyle = "#fff";
+      //ctx.textBaseline = "bottom";e
+      //ctx.font = "bold 30px Arial";eeeee
+      //ctx.fillStyle = "#fff";e
       //ctx.fillText("#TalkNow", 750, view.y + innerText.y);
 
       ctx.textBaseline = "top";
