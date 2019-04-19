@@ -27,9 +27,9 @@ $(function() {
       .html("...processing");
 
     // x, y, width, height
-    const picData = [200, 60, 700, 650];
+    const picData = [247, 41, 585, 572];
     // name, y
-    const nameData = [username, 500];
+    const nameData = [username, 920];
 
     createDP(username, imageData, picData, nameData, function(url) {
       navigateTo("yourdp", createHTMLForImage(url));
@@ -130,16 +130,16 @@ $(function() {
 
       ctx.drawImage(userImg, view.x, view.y, view.width, view.height);
 
-      ctx.textBaseline = "bottom";
-      ctx.font = "bold 20px Arial";
-      ctx.fillStyle = "#fff";
-      ctx.fillText("#TalkNow", view.x + innerText.x, view.y + innerText.y);
+      //ctx.textBaseline = "bottom";
+      //ctx.font = "bold 30px Arial";
+      //ctx.fillStyle = "#fff";
+      //ctx.fillText("#TalkNow", 750, view.y + innerText.y);
 
       ctx.textBaseline = "top";
-      ctx.textAlign = "right";
-      ctx.font = "normal 18px Candara";
+      ctx.textAlign = "center";
+      ctx.font = "italic 50px Caveat";
       ctx.fillStyle = "#000";
-      ctx.fillText(name[0], view.x + view.width, name[1]);
+      ctx.fillText(name[0], 750, name[1]);
 
       cb(canvas.toDataURL("image/jpeg", 1.0));
     }
