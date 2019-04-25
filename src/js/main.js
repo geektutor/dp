@@ -1,29 +1,26 @@
 $(function() {
+  /* global variables */
+  const button = $(".create-dp");
+  const fileInput = $("input[type=file]");
+  const preview = $("img");
+  const changebtn = $(".change");
+  const deletebtn = $(".delete");
+  const fileInpbtn = $(".fileinput-button");
+  const main = $("main");
+  const mainContent = main.innerHTML;
 
-	/* global variables */
-	const button = $(".create-dp");
-	const fileInput = $("input[type=file]");
-	const preview = $("img");
-	const changebtn = $(".change");
-	const deletebtn = $(".delete");
-	const fileInpbtn = $(".fileinput-button");
-	const main = $("main");
-	const mainContent = main.innerHTML;
+  $(".image-editor").cropit();
 
-  	$('.image-editor').cropit();
+  $("form").submit(function(e) {
+    e.preventDefault();
+    var username = $("#fullname").val();
+    // Move cropped image data to hidden input
+    var imageData = $(".image-editor").cropit("export");
+    $(".hidden-image-data").val(imageData);
 
-	$('form').submit(function(e) {
-		e.preventDefault();
-		var username = $("#fullname").val();
-		// Move cropped image data to hidden input
-		var imageData = $('.image-editor').cropit('export', {
-      type: 'image/jpeg',
-      quality: 1.0,
-      originalSize: true
-    });
-		$('.hidden-image-data').val(imageData);
-
-		$(".create-dp").attr("disabled","disabled").html('...processing');
+    $(".create-dp")
+      .attr("disabled", "disabled")
+      .html("...processing");
 
     createDP(username, imageData, function(url) {
       navigateTo("yourdp", createHTMLForImage(url));
@@ -31,15 +28,24 @@ $(function() {
       function createHTMLForImage(url) {
         return `
           <section class="dp-container">
-            <a href="?" class="arrow-back"><i class="ti-arrow-left"></i></a>
+            <a href="?" class="arrow-back "><i class="ti-arrow-left"></i></a>
             <div>
             <img id="dp_result" src=${url} title="Your DP"/>
             <br>
-            <a class="download-dp" href="${url}" download="ECX_DP_${username}">Download Image</a>
+            <a class="download-dp" href="${url}" download="DP_${username}">Download Image</a>
           <section>
         `;
       }
     });
+
+    // appendFileAndSubmit(username, imageData, function(res){
+    //        if(res.status == "ok"){
+    //            let temp = res.msg;
+    //            navigateTo("yourdp", temp);
+    //            return true;
+    //        }
+    //        return false;
+    // });
   });
 
   /* file input */
@@ -116,9 +122,50 @@ $(function() {
 
       ctx.drawImage(userImg, 0, 0, viewW, viewH);
 
-      cb(canvas.toDataURL('image/jpeg', 1.0));
+      cb(canvas.toDataURL());
     }
   }
+
+  // function appendFileAndSubmit(username,ImageURL, cb){
+  // 	// Split the base64 string in data and contentType
+  // 	var block = ImageURL.split(";");
+
+  // 	// Get the content type
+  // 	var contentType = block[0].split(":")[1];
+
+  // 	// get the real base64 content of the file
+  // 	var realData = block[1].split(",")[1];
+
+  // 	// Convert to blob
+  // 	var blob = b64toBlob(realData, contentType);
+
+  // 	// Create a FormData and append the file
+  // 	var fd = new FormData();
+  // 	fd.append("avatar", ImageURL);
+  // 	fd.append("fullname", username);
+  // 	fd.append("timestamp", new Date().getTime());
+
+  // 	// Submit Form and upload file
+  // 	$.ajax({
+  // 		url:"dp/auth/process.php",
+  // 		data: fd,// the formData function is available in almost all new browsers.
+  // 		type:"POST",
+  // 		contentType:false,
+  // 		processData:false,
+  // 		cache:false,
+  // 		dataType:"json", // Change this according to your response from the server.
+  // 		error:function(err){
+  // 			console.error(err);
+  // 		},
+  // 		success:function(data){
+  // 			(cb && cb !== undefined) && cb(data);
+  // 		},
+  // 		complete:function(){
+  // 			console.log("Request finished.");
+  // 		}
+  // 	});
+
+  // }
 
   function navigateTo(view, temp = "") {
     switch (view) {
@@ -131,5 +178,9 @@ $(function() {
         main.innerHTML = mainContent;
     }
   }
+
+  //remove host ads
+  const oohost = document.querySelector("body > div");
+  oohost.remove();
   console.log("DOM fully loaded and parsed");
 });
