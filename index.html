@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="src/css/style.css">
 	<link rel="stylesheet" type="text/css" href="src/fonts/themify-icons.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway|Source+Sans+Pro&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -21,8 +22,8 @@
 
 		<section class="under">			
 			<div>
-				<h2>Display Picture (DP) Generator</h2>
-				<p class="">Upload photo to create your DP</p>
+				<h2 style="color:rgb(177, 20, 72)">Display Picture (DP) Generator</h2>
+				<p style="color: rgb(255, 189, 66)">Upload photo to create your DP</p>
 				<p class="step">To generate your personalized DP</p>
 			</div>	
 			<ul>
@@ -30,23 +31,23 @@
 				<li class="ti">Upload your picture (for best experience, crop the picture to square)</li>
 				<li class="ti">Click on Create your own DP</li>
 				<li class="ti">Dont forget to share on 
-					<span class="ti-facebook" style="color: rgb(29, 45, 130);">facebook</span>, 
-					<span class="ti-twitter" style="color: #03A9F4;">twitter</span>, 
-					<span class="ti-instagram" style="color: #00BCD4;">instagram</span>, and make sure you hashtag (#DP)</li>
+					<span class="ti-facebook" style="color: rgb(177, 20, 72);font-family: 'Raleway', sans-serif;padding-left:3px; ">facebook</span>, 
+					<span class="ti-twitter" style="color: rgb(255, 189, 66);font-family: 'Raleway', sans-serif; ">twitter</span>, 
+					<span class="ti-instagram" style="color: greenyellow;font-family: 'Raleway', sans-serif; ">instagram</span>, and make sure you hashtag (#DP)</li>
 			</ul>
 		</section>
 
 		<section class="top">
 			<form enctype="multipart/form-data" action="" method="POST" onsubmit="event.preventDefault();">
 				<fieldset>
-					<legend class="ti-camera"></legend>
+					<legend class="ti-camera" style="color: rgb(255, 189, 66); padding-top: 5px;"></legend>
 					<div class="form-control">
-	                    <input placeholder="name" required="" id="fullname" name="fullname" type="text">
+	                    <input placeholder="Name" required="" id="fullname" name="fullname" type="text">
 					</div>
 					<div class="image-editor">
 						<!-- <input type="file" class="cropit-image-input"> -->
 						<span class="btn btn-input fileinput-button">
-		                    <i class="ti-camera"></i>
+						<i class="ti-camera" style="color: rgb(177, 20, 72);"></i>
 		                    <span>Choose an image...</span>
 							<input id="file" name="file" type="file" class="cropit-image-input" required="">
 							<input type="hidden" name="image-data" class="hidden-image-data" />
@@ -62,7 +63,7 @@
 			                </button>
 		                </div> 
 						<div class="cropit-preview"></div>
-						<div class="image-size-label">
+						<div class="image-size-label" style="color: rgb(255, 189, 66)">
 						  Resize image
 						</div>
 						<input type="range" class="cropit-image-zoom-input">
