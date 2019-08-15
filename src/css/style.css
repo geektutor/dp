@@ -7,9 +7,9 @@ body {
   width: 100vw;
   font-size: 100%;
   color: #000;
-  background: linear-gradient(#424e5c, #0b060e, #3a4750);
+  background: rgb(14, 221, 248);
   color: #fff;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Montserrat', sans-serif
 }
 
 * {
@@ -19,6 +19,12 @@ body {
 
 h1 {
   padding-left: 40px;
+  align-content: center;
+  color:rgb(177, 20, 72);
+  padding-bottom: 4px;
+  box-shadow: 4px 4px 4px rgb(177, 20, 72);
+  background-color: #00BCD4;
+  
 }
 /* button */
 .kb-button {
@@ -72,17 +78,22 @@ footer {
 /* header */
 header {
   flex: 0 1 auto;
+  text-align: center;
+  padding-top: 5px;
+  
 }
 
 /* main */
 main {
   flex: 1 1 auto;
   min-width: 980px;
-  background: #290e3b;
+  background: #00BCD4;
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   border-radius: 10px;
+  
+  
 }
 
 .under {
@@ -114,12 +125,16 @@ main {
 .top {
   width: 30%;
   min-height: 80%;
-  background: #644d2c;
+  background: rgb(255, 189, 66);
   position: absolute;
   right: 15%;
   display: flex;
   flex-flow: column;
   align-items: center;
+  border: none;
+  padding-top: 5px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px rgb(177, 20, 72);
 }
 
 /* list */
@@ -191,11 +206,19 @@ span[class*="ti-"] {
 form {
   order: 1;
   flex: 0 1 auto;
+  background-color:rgb(177, 20, 72);
+  border-radius: 0;
+  border: none;
+  padding-top: 8px;
 }
 
 fieldset {
-  background: rgb(255, 255, 255);
-  border: 3px outset rgb(119, 86, 178);
+  background:rgb(177, 20, 72);
+  border: none;
+  padding-top: 8px;
+  
+
+  
 }
 
 legend {
@@ -214,24 +237,31 @@ legend {
   width: 100%;
   padding: 10px;
   font-size: 16px;
-  color: #000 !important;
+  color: #fff !important;
+  background-color: rgb(255, 189, 66);
 }
 
 #fullname {
   transition: all 0.5s ease;
-  background: #fff url(http://cssdeck.com/uploads/media/items/8/8bcLQqF.png)
+  background:  rgb(255, 189, 66) url(http://cssdeck.com/uploads/media/items/8/8bcLQqF.png)
     no-repeat;
-  border: 1px solid rgb(200, 200, 200);
-  color: rgb(119, 119, 119);
+  border: 1px solid rgb(255, 189, 66);
+  border-radius: 2px;
+  color: #fff;
   margin: 0 0 10px;
   padding: 10px 10px 12px 40px;
   background-position: 5px 9px;
+}
+::placeholder{
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  padding: 0px;
 }
 
 button[value="submit"] {
   display: block;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-  background-color: rgb(0, 191, 165);
+  background-color: rgb(255, 189, 66);
   font-weight: 700;
   width: 90%;
 }
@@ -268,7 +298,7 @@ button[type="submit"]:hover {
 
 .btn-input {
   color: rgb(255, 255, 255);
-  background-color: #290e3b;
+  background-color: rgb(255, 189, 66);
   border-color: rgb(29, 129, 209);
 }
 
@@ -332,7 +362,7 @@ img#dp_result {
   margin: 0 auto;
   border: none;
   outline: none;
-  background: hsl(315, 90%, 35%);
+  background: rgb(177, 20, 72);
   color: #fff;
 }
 
@@ -347,7 +377,7 @@ footer p {
 }
 
 footer .social {
-  color: #03a9f4;
+  color:  rgb(255, 189, 66);
   text-decoration: none;
 }
 
@@ -375,6 +405,9 @@ footer .social {
 input {
   display: block;
   margin-left: 7px;
+}
+input[type="text"]{
+  color: rgb(255, 189, 66);
 }
 
 button[type="submit"] {
@@ -418,7 +451,8 @@ button[type="submit"] {
     height: auto;
     flex-flow: row wrap;
     overflow-y: scroll;
-    background: #290e3b;
+    background: #00BCD4;
+    box-shadow: 0px;
   }
 
   .under,
