@@ -2,7 +2,7 @@
 
 As an update, we will be adding a certificate generator to automatically generate certificates for students who successfully complete the program.
 
-The idea is we will have a csv file that will have names and emails in different columns.
+The idea is, we will have a csv file that will have names and emails in different columns.
 
 The names will be added to the certificate frames (image frame) and emailed to the email on the email tab.
 
