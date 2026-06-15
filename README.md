@@ -65,3 +65,4 @@ You can set the height and width of the uploaded image in the createDP function 
 #### [Geektutor](https://github.com/geektutor)
 
 #### This project is based on [KwaraBuildDP](https://github.com/Ahmzyjazzy/generatedp) by [Ahmad Olarenwaju](https://ng.linkedin.com/in/ahmzyjazzy)
+.
