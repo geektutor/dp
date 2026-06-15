@@ -2,7 +2,7 @@
 
 #### (Case study Engineering Career Expo, Unilag)
 
-This is a volunteer project to create social media awareness for the student run event. Attendees input their name and upload an image to generate a customize ECX event dp.
+This is a volunteer project to create social media awareness for the student run event. Attendees input their names and upload an image to generate a customize (Engineering Career Expo) ECX event dp.
 
 You can find an online demo at [ECX](https://ecx.website/dp).
 
